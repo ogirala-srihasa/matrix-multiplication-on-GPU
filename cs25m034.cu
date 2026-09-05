@@ -14,7 +14,7 @@ __global__ void transpose(int* d_matrixA, int* d_matrixAT, int columns, int rows
 	//Dividing the matrix into 2d small blocks of size 32*32 
 	//Launch configuration <<(ciel(columns/32),ciel(rows/32),1),(32,32,1)>>
 
-	__shared__ int smallblockA[32][32];
+	__shared__ int smallblockA[32][33]; // 33 to avoid bank comflicts
 
 	// x is mapped to columns and y is mapped to rows
 
